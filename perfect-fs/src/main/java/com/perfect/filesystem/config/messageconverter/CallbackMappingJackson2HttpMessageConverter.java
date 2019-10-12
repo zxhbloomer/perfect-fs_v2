@@ -43,7 +43,6 @@ public class CallbackMappingJackson2HttpMessageConverter extends FastJsonHttpMes
                                                         SerializerFeature.PrettyFormat,
                                                         SerializerFeature.WriteNullNumberAsZero
                                                         );
-        System.out.println(JSON.toJSONString(o));
         super.write(o, type, contentType, outputMessage);
     }
 
