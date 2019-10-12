@@ -96,35 +96,19 @@ spring:
       test-while-idle: true
       # 指定空闲连接检查、废弃连接清理、空闲连接池大小调整之间的操作时间间隔
       time-between-eviction-runs-millis: 18800
+    url: jdbc:mysql://localhost:3306/perfect-fs?tinyInt1isBit=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1q2w3e4r
     driverClassName: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      ##  Hikari 连接池配置
-      ## 最小空闲连接数量
-      minimum-idle: 5
-      ## 空闲连接存活最大时间，默认600000（10分钟）
-      idle-timeout: 180000
-      ## 连接池最大连接数，默认是10
-      maximum-pool-size: 10
-      ## 此属性控制从池返回的连接的默认自动提交行为,默认值：true
-      auto-commit: true
-      ## 连接池名
-      pool-name: MyHikariCP
-      ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-      max-lifetime: 1800000
-      ## 数据库连接超时时间,默认30秒，即30000
-      connection-timeout: 30000
-      connection-test-query: SELECT 1
-      db1:
-        jdbc-url: jdbc:mysql://localhost:3306/perfect-fs?tinyInt1isBit=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&&allowPublicKeyRetrieval=true&serverTimezone=UTC
-        username: root
-        password: 1q2w3e4r
-      db2:
-        # 数据源2开关/默认关闭
-        enabled: false
-        jdbc-url:
-        username:
-        password:..
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      max-wait-millis: 10000
+      min-idle: 5
+      initial-size: 5
+      validation-query: select 1
+      connection-properties: characterEncoding=utf8
+
+
 
 #-----------------------日志设置---------------------------
 logging:

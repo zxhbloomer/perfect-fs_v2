@@ -163,19 +163,16 @@ CREATE TABLE `groupuser` (
 -- ----------------------------
 -- Table structure for `hibernate_sequence`
 -- ----------------------------
-DROP TABLE IF EXISTS `hibernate_sequence`;
-CREATE TABLE `hibernate_sequence` (
+DROP TABLE IF EXISTS `hibernate_sequences`;
+CREATE TABLE `hibernate_sequences` (
+  `sequence_name` varchar(255) DEFAULT NULL,
   `next_val` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hibernate_sequence
 -- ----------------------------
-INSERT INTO `hibernate_sequence` VALUES ('1');
-INSERT INTO `hibernate_sequence` VALUES ('1');
-INSERT INTO `hibernate_sequence` VALUES ('1');
-INSERT INTO `hibernate_sequence` VALUES ('1');
-INSERT INTO `hibernate_sequence` VALUES ('1');
+
 
 -- ----------------------------
 -- Table structure for `history`
