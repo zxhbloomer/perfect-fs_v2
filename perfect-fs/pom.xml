@@ -53,6 +53,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
+      <scope>true</scope>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -201,7 +202,7 @@
           </dependency>
         </dependencies>
         <configuration>
-          <executable>true</executable>
+          <fork>true</fork>
         </configuration>
         <executions>
           <execution>
