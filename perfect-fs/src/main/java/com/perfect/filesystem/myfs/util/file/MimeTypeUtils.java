@@ -3,7 +3,7 @@ package com.perfect.filesystem.myfs.util.file;
 /**
  * 媒体类型工具类
  * 
- * @author ruoyi
+ * @author
  */
 public class MimeTypeUtils
 {
