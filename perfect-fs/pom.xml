@@ -13,7 +13,7 @@
     <artifactId>fs-parent</artifactId>
     <groupId>com.perfect-fs</groupId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+    <relativePath></relativePath>
   </parent>
 
   <properties>
