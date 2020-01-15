@@ -1,6 +1,5 @@
 package com.perfect.filesystem.config.messageconverter;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.http.HttpOutputMessage;
@@ -13,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * @author Administrator
+ */
 public class CallbackMappingJackson2HttpMessageConverter extends FastJsonHttpMessageConverter {
 
     @Override
@@ -20,7 +22,9 @@ public class CallbackMappingJackson2HttpMessageConverter extends FastJsonHttpMes
 //        System.out.println(JSON.toJSONString(o, SerializerFeature.DisableCircularReferenceDetect));
         // 中文乱码解决方案
         List<MediaType> mediaTypes = new ArrayList<>();
-        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);//设定json格式且编码为UTF-8
+//        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);//设定json格式且编码为UTF-8
+        //设定json格式且编码为UTF-8
+        mediaTypes.add(MediaType.APPLICATION_JSON);
         mediaTypes.add(MediaType.MULTIPART_FORM_DATA);
         mediaTypes.add(MediaType.APPLICATION_FORM_URLENCODED);
         mediaTypes.add(MediaType.valueOf("text/html;charset=UTF-8"));
