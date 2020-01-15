@@ -186,6 +186,11 @@
       <artifactId>commons-io</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+
   </dependencies>
   <!--指定使用maven打包-->
   <build>
