@@ -82,7 +82,9 @@ public class FileUtil {
         // 路径为文件且不为空则进行删除
         if (file.isFile() && file.exists())
         {
-            file.delete();
+            if(!file.delete()) {
+                throw new RuntimeException("文件删除失败");
+            }
             flag = true;
         }
         return flag;

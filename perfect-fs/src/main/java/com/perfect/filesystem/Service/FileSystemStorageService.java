@@ -64,7 +64,9 @@ public class FileSystemStorageService implements StorageService {
             File tmpFile = new File(filePath);
             File parentDir = tmpFile.getParentFile();
             if ((parentDir != null) && (!parentDir.exists())) {
-                parentDir.mkdirs();
+                if(!parentDir.mkdirs()) {
+                    throw new StorageException("生成文件发生错误");
+                }
             }
             multipartFile.transferTo(new File(tmpFile.getAbsolutePath()).toPath());
             return filePath;
@@ -137,10 +139,14 @@ public class FileSystemStorageService implements StorageService {
         File desc = new File(uploadDir + File.separator + filename);
 
         if (!desc.getParentFile().exists()) {
-            desc.getParentFile().mkdirs();
+            if(!desc.getParentFile().mkdirs()) {
+                throw new RuntimeException("文件生成失败");
+            }
         }
         if (!desc.exists()) {
-            desc.createNewFile();
+            if(!desc.createNewFile()){
+                throw new RuntimeException("文件生成失败");
+            }
         }
         return desc;
     }
