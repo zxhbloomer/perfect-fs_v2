@@ -1,0 +1,124 @@
+# appname =  perfect-fs私有文件云存储OSS服务
+#-----------------------tomcat设置---------------------------
+server:
+  port: 9091
+  servlet:
+    context-path: /perfect-fs
+    session:
+      cookie:
+        name: PERFECT_SESSION
+      timeout: 1800
+  tomcat:
+    max-connections: 10000
+    accept-count: 1000
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+    remote-ip-header: x-forwarded-for
+    protocol_header: x-forwarded-proto
+
+#-----------------------基础设置---------------------------
+storage:
+  template: thymeleaf
+  debug: true
+  # 存储的相对路径，如果 storage.source = perfect-fs 需要配置        #
+  fsName: fs
+  fsBaseUrl: http://127.0.0.1:8099/
+  location: uploadfiledir
+  downloadto: d://downloadfile//
+  downloadurl: http://localhost:9091/files/
+  # 是否重新命名文件名，如果是个人文件则重命名为：username_ + 原文件名；如果是群组文件则重命名为：groupid_ + 原文件名     #
+  rename: false
+  # 存储源.可多选.可以同时储存多个数据源,便于备份 , 建议第三方存储源只选取1-2个即可     #
+  # 类型有：perfect-fs\\FastDFS\\SeaweedFS\\MongoDB\\aliOSS\\qiniu\\CFS        #
+  todisk: true
+  toqiniu: false
+  tofastdfs: false
+  tomongodb: false
+  toseaweedfs: false
+  toalioss: false
+  # 设置用于下载的源 ,单选   #
+  # 类型有：perfect-fs\\FastDFS\\SeaweedFS\\MongoDB\\aliOSS\\qiniu\\CFS        #
+  downloadfrom: perfect-fs
+  # perfect-fs存储配置     #
+  diskprefix: http://localhost:9091/files/
+
+#-----------------------spring 设置---------------------------
+spring:
+
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+    cache: false
+
+  freemarker:
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  devtools:
+    livereload:
+      port: 45730
+    restart:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  servlet:
+    # multipart 上传配置
+    multipart:
+      enabled: true
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+  datasource:
+    tomcat:
+      # 当从连接池借用连接时，是否测试该连接.
+      test-on-borrow: false
+      # 当连接空闲时，是否执行连接测试
+      test-while-idle: true
+      # 指定空闲连接检查、废弃连接清理、空闲连接池大小调整之间的操作时间间隔
+      time-between-eviction-runs-millis: 18800
+    url: jdbc:mysql://localhost:3306/perfect-fs?tinyInt1isBit=true&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1q2w3e4r
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      max-wait-millis: 10000
+      min-idle: 5
+      initial-size: 5
+      validation-query: select 1
+      connection-properties: characterEncoding=utf8
+
+
+
+#-----------------------日志设置---------------------------
+logging:
+  config: classpath:logback-spring.xml
+
+#-----------------------perfect fs 设置---------------------------
+# 物理删除flag
+perfect:
+  filesystem:
+    real-delete: false
+    upload-data-path: d:/tmp/fs/
+    # 错误日志输出简单模式
+    simple-log-model: true

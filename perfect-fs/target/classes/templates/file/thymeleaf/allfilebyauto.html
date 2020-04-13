@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sd="http://io.github.jpenren/sd">
+	
+<head th:include="head::header" />
+    <script th:src="@{~/js/require.min.js}"></script>
+    <script>
+      requirejs.config({
+          baseUrl: '.'
+      });
+    </script>
+<body>
+
+<header >
+<div th:replace="menu::menu">
+</div>
+</header>
+
+<div class="container"> 	
+    	    	
+<div class="my-3 my-md-5">
+  <div class="container">
+   	
+<!-- PAGE TITLE -->
+		<div class="page-title">
+			<h3>
+				<span class="fa fa-arrow-circle-o-left"></span> 文件清单
+			</h3>
+		</div>
+<!-- PAGE TITLE END-->		
+		
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+			  <th><a class="sorted" sd:pagination-sort="fileid" >文件ID</a></th>			  
+			  <th><a class="sorted" sd:pagination-sort="appid" >appId</a></th>
+			  <th><a class="sorted" sd:pagination-sort="uploadUser" >上传者</a></th>
+			  <th>文件名</th>
+			  <th>大小(KB)</th>
+			  <th>OSS下载</th>
+			  <th>云端下载通道</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="row : ${page}">
+			  <th th:text="${row.fileid}"></th>
+			  <td th:text="${row.appid}"></td>
+			  <td th:text="${row.uploadUser}"></td>
+			  <td th:text="${row.fileName}"></td>
+			  <td th:text="${row.fileSize}"></td>
+
+			  <td >
+			  <div class="d-flex align-items-center">
+				<A th:href="${row.urldisk}" target="_blank"  class="stamp stamp-md bg-blue mr-3" data-toggle="tooltip" title="OSS下载"><i class="fe fe-download" ></i></A>
+			  <div>
+			  </td>
+			  <td >
+				  <div class="d-flex align-items-center" th:if="${!#strings.isEmpty(row.urlqiniu)}">
+					<A th:href="${row.urlqiniu}" target="_blank" class="stamp stamp-md bg-blue mr-3"  data-toggle="tooltip" title="七牛"><i class="fe fe-download-cloud" ></i></A>
+				  <div>
+				  
+				  <div class="d-flex align-items-center" th:if="${#objects.nullSafe(row.urlmongodb,default)}">
+					<A th:href="${row.urlmongodb}" target="_blank" class="stamp stamp-md bg-blue mr-3" data-toggle="tooltip" title="mongodb下载"><i class="fe fe-download-cloud"></i></A>
+				  <div>
+				  
+			
+				  <div class="d-flex align-items-center" th:if="${!#strings.isEmpty(row.urlfastdfs)}">
+					<A th:href="${row.urlfastdfs}" target="_blank" class="stamp stamp-md bg-blue mr-3" data-toggle="tooltip" title="fastDFS下载"><i class="fe fe-download-cloud"></i></A>
+				  <div>
+			  
+				  <div class="d-flex align-items-center" th:if="${!#strings.isEmpty(row.urlalioss)}">
+					<A th:href="/files/gridfsdownload/${row.urlalioss}" target="_blank" class="stamp stamp-md bg-blue mr-3" data-toggle="tooltip" title="阿里云下载"><i class="fe fe-download-cloud"></i></A>
+				  <div>
+			 
+
+			  </td>
+			</tr>
+		</tbody>
+	</table>
+	
+
+	<div class="row">
+	    <div class="col-sm-6">
+	    每页<span sd:page-size-selector="javascript"></span>记录
+		<!-- 	    	<div sd:pagination-summary="">info</div> -->
+	    </div>
+	    <div class="col-sm-6">
+	    	<nav class="pull-right">
+			<ul class="pagination" sd:pagination="full">
+				<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+			   	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+			</ul>
+		</nav>
+	    </div>
+	</div>
+	
+
+
+</div>
+</div>
+</div>
+<!-- PAGE FOOT -->
+
+<footer  class="footer">
+<div th:replace="foot::footer">
+</div>
+</footer>
+
+
+
+</body>
+</html>
