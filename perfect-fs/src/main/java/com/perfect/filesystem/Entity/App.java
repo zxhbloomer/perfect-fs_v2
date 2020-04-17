@@ -1,7 +1,7 @@
 package com.perfect.filesystem.Entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 
@@ -17,7 +17,8 @@ import javax.persistence.*;
          
 })
 public class App implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 6029753813970180620L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)

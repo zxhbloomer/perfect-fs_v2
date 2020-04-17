@@ -1,7 +1,10 @@
 package com.perfect.filesystem.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import javax.persistence.*;
 
 
 /**
@@ -10,8 +13,9 @@ import javax.persistence.*;
  */
 @Entity
 public class Groupuser implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+
+	private static final long serialVersionUID = 9085767457223302543L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	private Long id;

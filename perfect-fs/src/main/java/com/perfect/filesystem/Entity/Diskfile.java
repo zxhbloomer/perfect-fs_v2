@@ -12,7 +12,8 @@ import java.math.BigInteger;
  */
 @Entity
 public class Diskfile implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -7647080097887784123L;
 
 	@Id
 	//@GeneratedValue(strategy=GenerationType.AUTO)

@@ -1,9 +1,12 @@
 package com.perfect.filesystem.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
 import java.math.BigInteger;
+import java.util.Date;
 
 
 /**
@@ -12,7 +15,8 @@ import java.math.BigInteger;
  */
 @Entity
 public class Diskuser implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 277101542457805956L;
 
 	@Id
 	//@GeneratedValue(strategy=GenerationType.AUTO)

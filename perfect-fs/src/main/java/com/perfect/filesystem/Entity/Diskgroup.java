@@ -1,7 +1,10 @@
 package com.perfect.filesystem.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
 
@@ -11,7 +14,8 @@ import java.util.Date;
  */
 @Entity
 public class Diskgroup implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -1035844373824881705L;
 
 	@Id
 	//@GeneratedValue(strategy=GenerationType.AUTO)

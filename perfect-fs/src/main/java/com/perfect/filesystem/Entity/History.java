@@ -1,7 +1,7 @@
 package com.perfect.filesystem.Entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -11,7 +11,8 @@ import java.util.Date;
  */
 @Entity
 public class History implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -8471879404114602485L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
