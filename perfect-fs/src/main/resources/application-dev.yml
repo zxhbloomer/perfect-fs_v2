@@ -111,8 +111,10 @@ spring:
 
 
 #-----------------------日志设置---------------------------
-logging:
-  config: classpath:logback-spring.xml
+#logging:
+#  config: classpath:logback-spring.xml
+log:
+  path: D:/spring_log/perfect/file_system
 
 #-----------------------perfect fs 设置---------------------------
 # 物理删除flag
