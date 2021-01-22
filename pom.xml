@@ -28,6 +28,7 @@
     <project.build.springbootversion>2.3.2.RELEASE</project.build.springbootversion>
     <spring.social.version>1.1.6.RELEASE</spring.social.version>
     <poi.version>4.1.0</poi.version>
+    <lombok.version>1.18.16</lombok.version>
   </properties>
 
   <dependencyManagement>
@@ -105,7 +106,7 @@
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
-        <version>1.18.12</version>
+        <version>${lombok.version}</version>
         <optional>true</optional>
       </dependency>
 
